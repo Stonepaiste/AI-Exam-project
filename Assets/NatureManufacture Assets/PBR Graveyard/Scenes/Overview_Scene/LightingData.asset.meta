@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: adf1a72e31f0430448f819a9cf725f36
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 58915
+  packageName: PBR Graveyard and Nature Set 2.0
+  packageVersion: 3.7.8
+  assetPath: Assets/NatureManufacture Assets/PBR Graveyard/Scenes/Overview_Scene/LightingData.asset
+  uploadId: 751956
