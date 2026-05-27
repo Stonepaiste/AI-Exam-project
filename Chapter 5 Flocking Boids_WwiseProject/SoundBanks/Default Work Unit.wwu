@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{247F3F15-1894-4AF8-8B38-40E2D400DC81}" SchemaVersion="133">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{247F3F15-1894-4AF8-8B38-40E2D400DC81}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{42C10DD2-0C96-4BC1-A8CF-5F0029EF151D}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_Ravens" ID="{6C79B09B-AF6F-4F4D-8063-E988CB9DB271}" WorkUnitID="{7648E0E4-2DCF-4915-AE73-37286F510422}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

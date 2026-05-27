@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{25C9BC12-668C-4B3F-8B51-8A4CAD6AE3F1}" SchemaVersion="133">
+	<Containers>
+		<WorkUnit Name="Default Work Unit" ID="{25C9BC12-668C-4B3F-8B51-8A4CAD6AE3F1}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Ravens" ID="{7D509E64-F6C9-4279-A109-3A083388573D}" ShortID="942322889">
+					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{84B0277B-DE14-4F15-907F-31C81EFA478B}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{E95F2360-BD48-49FD-9BD4-4E8C335D65DB}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="freesound_community-raven-manymp3-14529" ID="{D038C1BC-07A2-467D-9E99-E1B282DE2FD3}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>freesound_community-raven-manymp3-14529.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="763099093"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="freesound_community-raven-manymp3-14529" ID="{D038C1BC-07A2-467D-9E99-E1B282DE2FD3}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</Containers>
+</WwiseDocument>

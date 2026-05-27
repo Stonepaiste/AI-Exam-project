@@ -1,0 +1,45 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Linux",
+  "BasePlatform": "Linux",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "172",
+  "SoundBanks": [
+   {
+    "Id": "3161908922",
+    "Type": "User",
+    "GUID": "{42C10DD2-0C96-4BC1-A8CF-5F0029EF151D}",
+    "Language": "SFX",
+    "Hash": "{65AE3999-37F8-6C45-C791-177C8748778B}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
+    "ShortName": "Main",
+    "Path": "Main.bnk",
+    "Media": [
+     {
+      "Id": "763099093",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "freesound_community-raven-manymp3-14529.wav",
+      "CachePath": "2C/{2C45FBBD-107F-D47F-2B4F-439FDBAB731C}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "247295575",
+      "Name": "Play_Ravens",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Ravens",
+      "GUID": "{6C79B09B-AF6F-4F4D-8063-E988CB9DB271}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "763099093"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{2C167C4C-98CC-D65B-5C1C-8D7FA275A810}"
+ }
+}

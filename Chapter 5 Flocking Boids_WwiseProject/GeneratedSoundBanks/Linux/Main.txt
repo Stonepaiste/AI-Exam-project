@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	247295575	Play_Ravens			\Default Work Unit\Play_Ravens	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	763099093	Ravens	.cache\2C\{2C45FBBD-107F-D47F-2B4F-439FDBAB731C}.wem		\Containers\Default Work Unit\Ravens		2252488
+
