@@ -4,6 +4,8 @@ namespace BirdAI
 {
     public enum BirdMode
     {
+        /// Do nothing — sits still until the behavior tree picks a mode.
+        Idle,
         /// Solo wander around the spawn area. No flocking.
         Roam,
         /// Head toward a target position with light flocking (used for rally, investigate, retreat).
@@ -43,19 +45,32 @@ namespace BirdAI
         public float alignmentWeight = 1.0f;
         public float cohesionWeight = 1.0f;
 
+        // ------------------------------------------------------------
+        // Public state (read/written by the behavior tree)
+        // ------------------------------------------------------------
+
         /// Where the bird wanders around when in Roam mode. Defaults to spawn position.
         public Vector3 RoamCenter { get; set; }
-        public BirdMode Mode { get; set; } = BirdMode.Roam;
+        public BirdMode Mode { get; set; } = BirdMode.Idle;
         public Vector3 Target { get; set; }
         public Vector3 Velocity => _velocity;
 
+        // ------------------------------------------------------------
+        // Internal state
+        // ------------------------------------------------------------
+
         private Vector3 _velocity;
         private Vector3 _roamTarget;
+
+        // ------------------------------------------------------------
+        // Unity lifecycle
+        // ------------------------------------------------------------
 
         void Start()
         {
             if (RoamCenter == Vector3.zero) RoamCenter = transform.position;
             PickRoamTarget();
+
             _velocity = transform.forward * cruiseSpeed;
             if (_velocity.sqrMagnitude < 0.01f)
                 _velocity = Random.onUnitSphere * cruiseSpeed;
@@ -63,48 +78,88 @@ namespace BirdAI
 
         void Update()
         {
-            Vector3 steer;
-            float speed = cruiseSpeed;
-
-            switch (Mode)
+            // Idle = do absolutely nothing. Lets us verify the behavior tree
+            // is actually setting Mode (otherwise birds just sit there).
+            if (Mode == BirdMode.Idle)
             {
-                case BirdMode.Roam:
-                    if ((transform.position - _roamTarget).sqrMagnitude
-                        < roamArriveRadius * roamArriveRadius)
-                    {
-                        PickRoamTarget();
-                    }
-                    steer = Seek(_roamTarget);
-                    break;
-
-                case BirdMode.Seek:
-                    steer = Seek(Target) + FlockForce(weightScale: 1.0f);
-                    break;
-
-                case BirdMode.Hold:
-                    steer = Seek(Target) * 0.6f + FlockForce(weightScale: 1.4f);
-                    break;
-
-                case BirdMode.Dive:
-                    // Commit hard to the dive line. Minimal flocking so birds don't
-                    // pull each other off target.
-                    steer = Seek(Target) + FlockForce(weightScale: 0.25f);
-                    speed = diveSpeed;
-                    break;
-
-                default:
-                    steer = Vector3.zero;
-                    break;
+                _velocity = Vector3.zero;
+                return;
             }
 
-            // Convert the steering vector into a desired velocity at the target speed.
+            Vector3 steer = GetSteeringForMode(out float speed);
+            ApplyMotion(steer, speed);
+        }
+
+        // ------------------------------------------------------------
+        // Mode dispatch
+        // ------------------------------------------------------------
+
+        /// Picks the right steering behavior for the current Mode.
+        Vector3 GetSteeringForMode(out float speed)
+        {
+            speed = cruiseSpeed;
+            switch (Mode)
+            {
+                case BirdMode.Roam: return RoamSteering();
+                case BirdMode.Seek: return SeekSteering();
+                case BirdMode.Hold: return HoldSteering();
+                case BirdMode.Dive:
+                    speed = diveSpeed;
+                    return DiveSteering();
+                default: return Vector3.zero;
+            }
+        }
+
+        // ------------------------------------------------------------
+        // Per-mode steering
+        // ------------------------------------------------------------
+
+        /// Solo wander: pick a new point when close to current target.
+        Vector3 RoamSteering()
+        {
+            if ((transform.position - _roamTarget).sqrMagnitude
+                < roamArriveRadius * roamArriveRadius)
+            {
+                PickRoamTarget();
+            }
+            return Seek(_roamTarget);
+        }
+
+        /// Standard hunt: seek + light flocking.
+        Vector3 SeekSteering()
+        {
+            return Seek(Target) + FlockForce(weightScale: 1.0f);
+        }
+
+        /// Hold near target with stronger flocking (forms a ring/cloud).
+        Vector3 HoldSteering()
+        {
+            return Seek(Target) * 0.6f + FlockForce(weightScale: 1.4f);
+        }
+
+        /// Commit hard to the dive line. Minimal flocking so birds don't pull each other off target.
+        Vector3 DiveSteering()
+        {
+            return Seek(Target) + FlockForce(weightScale: 0.25f);
+        }
+
+        // ------------------------------------------------------------
+        // Motion (turn-rate clamped position + rotation update)
+        // ------------------------------------------------------------
+
+        /// Take a steering vector and apply it to velocity/position/rotation.
+        void ApplyMotion(Vector3 steer, float speed)
+        {
+            // Convert steering into a desired velocity at the requested speed.
             Vector3 desired = steer.sqrMagnitude > 0.0001f
                 ? steer.normalized * speed
                 : _velocity;
 
+            // Rotate current velocity toward desired, clamped by turn rate.
             float turnRad = turnRateDeg * Mathf.Deg2Rad * Time.deltaTime;
             _velocity = Vector3.RotateTowards(_velocity, desired, turnRad, speed);
 
+            // Safety net: if anything went NaN, recover with a random kick.
             if (!IsFinite(_velocity) || _velocity.sqrMagnitude < 0.0001f)
                 _velocity = Random.onUnitSphere * cruiseSpeed;
 
@@ -112,6 +167,11 @@ namespace BirdAI
             transform.rotation = Quaternion.LookRotation(_velocity);
         }
 
+        // ------------------------------------------------------------
+        // Helpers
+        // ------------------------------------------------------------
+
+        /// Pick a new random wander point within the roam disc/altitude band.
         void PickRoamTarget()
         {
             Vector2 disc = Random.insideUnitCircle * roamRadius;
@@ -119,11 +179,11 @@ namespace BirdAI
             _roamTarget = RoamCenter + new Vector3(disc.x, h, disc.y);
         }
 
+        /// Pure seek vector from current position toward a target.
         Vector3 Seek(Vector3 target) => target - transform.position;
 
-        /// Classic boids forces, but only counts birds in a non-Roam mode —
-        /// so solo wanderers never pull on each other. The hive effectively
-        /// "condenses" when hunting.
+        /// Classic boids forces — separation, alignment, cohesion.
+        /// Only counts birds in a non-Roam mode so solo wanderers don't pull on each other.
         Vector3 FlockForce(float weightScale)
         {
             if (HiveMind.Instance == null || Mode == BirdMode.Roam) return Vector3.zero;
