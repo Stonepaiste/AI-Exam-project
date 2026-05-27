@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 878311860753ed040aac9f6aedc1c1fb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 276791
+  packageName: Mountain - Ancient Mountain Environment
+  packageVersion: 1.0
+  assetPath: Assets/HIVEMIND/TheMessengerMountain/CameraAnimations/Cam2Anim.controller
+  uploadId: 650755

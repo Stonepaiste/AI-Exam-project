@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2e617dd007791674a8b294664f3440d5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 276791
+  packageName: Mountain - Ancient Mountain Environment
+  packageVersion: 1.0
+  assetPath: Assets/HIVEMIND/TheMessengerMountain/CameraAnimations/SM_BirdAnimation.controller
+  uploadId: 650755
