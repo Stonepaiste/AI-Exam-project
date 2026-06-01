@@ -63,11 +63,12 @@ namespace BirdAI
 
             bool closeEnough = distSq < (r * 4f) * (r * 4f);
             if (_hit || (closeEnough && Vector3.Dot(bird.Motor.Velocity, toTarget) < 0f))
+            {
+                bird.Motor.BeginPostHitRoam();
                 return Status.Success;
+            }
 
             return Status.Running;
         }
-
-      
     }
 }

@@ -72,9 +72,14 @@ namespace BirdAI
 
         void OnTriggerEnter(Collider other)
         {
-            // FIX: tag is PlayerTarget, not Player
             if (other.CompareTag("PlayerTarget"))
-                StartCoroutine(PostHitRoam());
+                BeginPostHitRoam();
+        }
+
+        public void BeginPostHitRoam()
+        {
+            if (_isPostHitRoaming) return;
+            StartCoroutine(PostHitRoam());
         }
 
         private IEnumerator PostHitRoam()

@@ -20,7 +20,7 @@ public partial class SetRallyPointAction : Action
     [Tooltip("Output: where the flock should gather before diving.")]
     [SerializeReference] public BlackboardVariable<Vector3> RallyPoint;
 
-   /* protected override Status OnStart()
+    protected override Status OnStart()
     {
         if (Player?.Value == null)
         {
@@ -36,16 +36,16 @@ public partial class SetRallyPointAction : Action
         RallyPoint.Value = Player.Value.transform.position;
         return Status.Success;
     }
-    */
     
-    protected override Status OnStart()
+    
+   /* protected override Status OnStart()
     {
-        
+
         Vector3 fromBlackboard = Player.Value.transform.position;
         GameObject freshLookup = GameObject.FindWithTag("PlayerTarget");
         Vector3 fromTag = freshLookup != null ? freshLookup.transform.position : Vector3.zero;
         Debug.Log($"[Rally] Blackboard player pos: {fromBlackboard}  |  Fresh tag lookup pos: {fromTag}");
-        
+
         var player = GameObject.FindWithTag("PlayerTarget");
         if (player == null) return Status.Failure;
         if (RallyPoint == null) return Status.Failure;
@@ -53,6 +53,7 @@ public partial class SetRallyPointAction : Action
         RallyPoint.Value = player.transform.position;
         return Status.Success;
     }
+    */
     
     
 }
