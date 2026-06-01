@@ -24,7 +24,12 @@ namespace BirdAI
         {
             if (Self?.Value == null) return false;
             var bird = Self.Value.GetComponent<Bird>();
-            return bird != null && bird.Perception.HasLineOfSight;
+            if (bird == null || bird.Perception == null) return false;
+
+            var player = PlayerTarget.Instance;
+            if (player == null || !player.IsAlive) return false;
+
+            return bird.Perception.CanSeeTarget(player.CenterMass.position);
         }
     }
 }

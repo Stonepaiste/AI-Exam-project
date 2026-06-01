@@ -38,6 +38,11 @@ public class UnityFlock : MonoBehaviour
 
     private Transform transformComponent;
     private float randomFreqInterval;
+    
+    public bool followOrigin = false;
+    public float followOriginForce = 30.0f;
+    public float followOriginRange = 60.0f;
+
 
     void Start()
     {
@@ -85,6 +90,19 @@ public class UnityFlock : MonoBehaviour
                     randomFreqInterval / 2.0f));
         }
     }
+    
+    private void ApplyOriginFollow()
+    {
+        if (!followOrigin || origin == null) return;
+
+        Vector3 toLeader = origin.position - transformComponent.position;
+        float dist = toLeader.magnitude;
+
+        // Scale force by how far they are — closer = gentler pull
+        float strength = Mathf.Clamp01(dist / followOriginRange) * followOriginForce;
+        velocity += toLeader.normalized * strength;
+    }
+    
 
     void Update()
     {
@@ -183,8 +201,15 @@ public class UnityFlock : MonoBehaviour
         // Move
         transformComponent.Translate(velocity * Time.deltaTime, Space.World);
 
+    
+        
         normalizedVelocity = (velocity.sqrMagnitude > 0.000001f) ? velocity.normalized : Vector3.zero;
+        
+        ApplyOriginFollow();
     }
+    
+    
+    
 
     private static bool IsFinite(Vector3 v)
     {

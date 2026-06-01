@@ -6,48 +6,63 @@ using Action = Unity.Behavior.Action;
 
 namespace BirdAI
 {
-    /// Fly toward the swarm's rally point. Succeeds when the bird is within
-    /// the swarm's rallyCompleteRadius of that point (so the flock knows this
-    /// bird is "ready" for the dive).
+    /// Fly toward a rally point (read from the blackboard).
+    /// Returns Success when the bird is within ArriveRadius of the point.
+    /// No HiveMind dependency — all state lives on the blackboard.
     [Serializable, GeneratePropertyBag]
     [NodeDescription(
         name: "Fly To Rally Point",
-        description: "Steer toward HiveMind.RallyPoint. Succeeds when within rallyCompleteRadius.",
-        story: "[Self] flies to the rally point",
+        description: "Steers Self toward the RallyPoint blackboard variable. Succeeds when within ArriveRadius.",
+        story: "[Self] flies to [RallyPoint]",
         category: "Action/Bird",
         id: "bird-action-flytorally-0002")]
     public partial class FlyToRallyPointAction : Action
     {
+        [Tooltip("This bird.")]
         [SerializeReference] public BlackboardVariable<GameObject> Self;
+
+        [Tooltip("Position to fly to (typically set by Set Rally Point).")]
+        [SerializeReference] public BlackboardVariable<Vector3> RallyPoint;
+
+        [Tooltip("How close the bird must get before this node succeeds.")]
+        [SerializeReference] public BlackboardVariable<float> ArriveRadius;
+
+        private Bird _bird;
 
         protected override Status OnStart()
         {
-            if (Self?.Value == null) return Status.Failure;
-            if (HiveMind.Instance == null) return Status.Failure;
-            var bird = Self.Value.GetComponent<Bird>();
-            if (bird == null) return Status.Failure;
+            if (Self?.Value == null)
+            {
+                Debug.LogWarning("[FlyToRallyPoint] Self is NULL.");
+                return Status.Failure;
+            }
+            if (RallyPoint == null)
+            {
+                Debug.LogWarning("[FlyToRallyPoint] RallyPoint blackboard var not wired.");
+                return Status.Failure;
+            }
 
-            bird.Motor.Mode = BirdMode.Seek;
-            bird.Motor.Target = HiveMind.Instance.RallyPoint;
+            _bird = Self.Value.GetComponent<Bird>();
+            if (_bird == null || _bird.Motor == null)
+            {
+                Debug.LogWarning("[FlyToRallyPoint] Self has no Bird/BirdMotor component.");
+                return Status.Failure;
+            }
+
+            _bird.Motor.Mode = BirdMode.Seek;
+            _bird.Motor.Target = RallyPoint.Value;
             return Status.Running;
         }
 
         protected override Status OnUpdate()
         {
-            var bird = Self.Value.GetComponent<Bird>();
-            if (bird == null || HiveMind.Instance == null) return Status.Failure;
+            if (_bird == null || _bird.Motor == null) return Status.Failure;
 
-            // Self-abort if the swarm moved on (e.g. flipped to Diving or lost the target)
-            // so the Selector can pick the now-correct branch. Without this, a "sticky"
-            // Selector implementation would keep us flying to rally during a dive.
-            if (HiveMind.Instance.State != HiveState.Rallying)
-                return Status.Failure;
+            // Follow any updates the tree makes to the rally point.
+            _bird.Motor.Target = RallyPoint.Value;
 
-            // Follow the rally point as it's updated each frame by the swarm.
-            bird.Motor.Target = HiveMind.Instance.RallyPoint;
-
-            float r = HiveMind.Instance.rallyCompleteRadius;
-            if ((bird.transform.position - HiveMind.Instance.RallyPoint).sqrMagnitude < r * r)
+            float r = ArriveRadius != null ? ArriveRadius.Value : 5f;
+            if ((_bird.transform.position - RallyPoint.Value).sqrMagnitude < r * r)
                 return Status.Success;
 
             return Status.Running;
