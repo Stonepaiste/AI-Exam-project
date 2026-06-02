@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3f6b66840eb055e46b4169b4e52198f0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264853
+  packageName: Pirate Island (Pirate, Pirates, Island) Environment
+  packageVersion: 2.0
+  assetPath: Assets/HIVEMIND/PirateIsland/HDRP(Default)/Art/Terrain/RockyGround.terrainlayer
+  uploadId: 685939

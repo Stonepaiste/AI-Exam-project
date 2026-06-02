@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 95d86fda1f982544782e52fc8ed22615
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264853
+  packageName: Pirate Island (Pirate, Pirates, Island) Environment
+  packageVersion: 2.0
+  assetPath: Assets/HIVEMIND/PirateIsland/HDRP(Default)/Art/Terrain/BeachSand.terrainlayer
+  uploadId: 685939
