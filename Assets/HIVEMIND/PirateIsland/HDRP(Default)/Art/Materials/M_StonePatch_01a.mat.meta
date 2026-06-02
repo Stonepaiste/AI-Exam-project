@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: abc00000000017254243688371406160
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: '{"GUIDArray":["","","",""],"withUV":[true,true,true,true]}'
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264853
+  packageName: Pirate Island (Pirate, Pirates, Island) Environment
+  packageVersion: 2.0
+  assetPath: Assets/HIVEMIND/PirateIsland/HDRP(Default)/Art/Materials/M_StonePatch_01a.mat
+  uploadId: 685939

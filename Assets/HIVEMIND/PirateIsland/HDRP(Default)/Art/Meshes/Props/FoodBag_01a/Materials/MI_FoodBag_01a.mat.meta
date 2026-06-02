@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1e3d5e6d44fa06445a11a3a1c45c9c62
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264853
+  packageName: Pirate Island (Pirate, Pirates, Island) Environment
+  packageVersion: 2.0
+  assetPath: Assets/HIVEMIND/PirateIsland/HDRP(Default)/Art/Meshes/Props/FoodBag_01a/Materials/MI_FoodBag_01a.mat
+  uploadId: 685939

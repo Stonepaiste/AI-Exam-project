@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b97e971d753e3254aa7541c8e70e3b5e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264853
+  packageName: Pirate Island (Pirate, Pirates, Island) Environment
+  packageVersion: 2.0
+  assetPath: Assets/HIVEMIND/PirateIsland/HDRP(Default)/Art/Meshes/StoneBuilding/Materials/M_StoneCobble_01.mat
+  uploadId: 685939

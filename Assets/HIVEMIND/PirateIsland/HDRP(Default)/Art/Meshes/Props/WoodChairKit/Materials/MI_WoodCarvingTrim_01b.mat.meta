@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 11e6c77af610b2547bb994ce6aeec23b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264853
+  packageName: Pirate Island (Pirate, Pirates, Island) Environment
+  packageVersion: 2.0
+  assetPath: Assets/HIVEMIND/PirateIsland/HDRP(Default)/Art/Meshes/Props/WoodChairKit/Materials/MI_WoodCarvingTrim_01b.mat
+  uploadId: 685939
