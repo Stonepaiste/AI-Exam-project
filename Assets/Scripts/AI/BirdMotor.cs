@@ -158,7 +158,7 @@ namespace BirdAI
                 _velocity = Random.onUnitSphere * speed;
 
             transform.position += _velocity * Time.deltaTime;
-            transform.rotation  = Quaternion.LookRotation(_velocity);
+            transform.rotation = Quaternion.LookRotation(_velocity) * Quaternion.Euler(0, 90, 0);
         }
 
         void PickRoamTarget()
