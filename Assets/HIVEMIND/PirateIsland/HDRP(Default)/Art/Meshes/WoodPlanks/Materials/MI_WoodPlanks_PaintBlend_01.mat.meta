@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 313caead22078c14c8c20b21bd32c2e7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 264853
+  packageName: Pirate Island (Pirate, Pirates, Island) Environment
+  packageVersion: 2.0
+  assetPath: Assets/HIVEMIND/PirateIsland/HDRP(Default)/Art/Meshes/WoodPlanks/Materials/MI_WoodPlanks_PaintBlend_01.mat
+  uploadId: 685939
