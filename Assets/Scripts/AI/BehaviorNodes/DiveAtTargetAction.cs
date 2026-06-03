@@ -51,20 +51,22 @@ namespace BirdAI
             var bird = Self.Value.GetComponent<Bird>();
             if (bird == null) return Status.Failure;
 
-            float r = bird.diveContactRadius;
-            Vector3 toTarget = _committedTarget - bird.transform.position;
-            float distSq = toTarget.sqrMagnitude;
+            float hitRadius = bird.diveContactRadius;
+            Vector3 directionToTarget = _committedTarget - bird.transform.position;
+            float distanceSquared = directionToTarget.sqrMagnitude;
 
-            if (!_hit && distSq < r * r)
+            if (!_hit && distanceSquared < hitRadius * hitRadius)
             {
                 bird.ApplyDiveHit();
                 _hit = true;
             }
 
-            bool closeEnough = distSq < (r * 4f) * (r * 4f);
-            if (_hit || (closeEnough && Vector3.Dot(bird.Motor.Velocity, toTarget) < 0f))
+            float passedByRadius = hitRadius * 4f;
+            bool closeEnough = distanceSquared < passedByRadius * passedByRadius;
+            bool flyingAwayFromTarget = Vector3.Dot(bird.Motor.Velocity, directionToTarget) < 0f;
+
+            if (_hit || (closeEnough && flyingAwayFromTarget))
             {
-               // bird.Motor.BeginPostHitRoam();
                 return Status.Success;
             }
 

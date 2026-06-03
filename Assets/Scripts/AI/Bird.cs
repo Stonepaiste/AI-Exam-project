@@ -36,8 +36,8 @@ namespace BirdAI
         /// enough to the player to register a hit.
         public void ApplyDiveHit()
         {
-            var p = PlayerTarget.Instance;
-            if (p != null) p.TakeDamage(diveDamage);
+            var player = PlayerTarget.Instance;
+            if (player != null) player.TakeDamage(diveDamage);
         }
     }
 }
