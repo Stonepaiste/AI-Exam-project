@@ -31,15 +31,6 @@ namespace BirdAI
             Perception = GetComponent<BirdPerception>();
         }
 
-        void OnEnable()
-        {
-            if (HiveMind.Instance != null) HiveMind.Instance.Register(this);
-        }
-
-        void OnDisable()
-        {
-            if (HiveMind.Instance != null) HiveMind.Instance.Unregister(this);
-        }
 
         /// Called by DiveAtTargetAction when the bird's dive pass crosses close
         /// enough to the player to register a hit.

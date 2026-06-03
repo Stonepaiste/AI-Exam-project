@@ -29,6 +29,10 @@ namespace BirdAI
         [Header("Post-Hit Roam")]
         public float postHitRoamDuration = 3f;
 
+        [Header("Obstacle Avoidance")]
+        public float lookAheadDistance = 4f;
+        public float avoidanceWeight = 12f;
+        public LayerMask obstacleMask;
         public Vector3 RoamCenter { get; set; }
         public Vector3 Target { get; set; }
         public Vector3 Velocity => _velocity;
@@ -65,7 +69,7 @@ namespace BirdAI
                 _velocity = Vector3.zero;
                 return;
             }
-
+            AvoidObstacles();
             Vector3 steer = GetSteeringForMode(out float speed);
             ApplyMotion(steer, speed);
         }
@@ -81,7 +85,15 @@ namespace BirdAI
             if (_isPostHitRoaming) return;
             StartCoroutine(PostHitRoam());
         }
+        
+        void AvoidObstacles()
+        {
+            if (!Physics.Raycast(transform.position, _velocity.normalized, out RaycastHit hit, lookAheadDistance, obstacleMask))
+                return;
 
+            Vector3 steerAway = Vector3.Reflect(_velocity.normalized, hit.normal);
+            _velocity += steerAway * avoidanceWeight * Time.deltaTime;
+        }
         private IEnumerator PostHitRoam()
         {
             _isPostHitRoaming = true;
