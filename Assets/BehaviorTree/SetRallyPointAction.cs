@@ -36,24 +36,4 @@ public partial class SetRallyPointAction : Action
         RallyPoint.Value = Player.Value.transform.position;
         return Status.Success;
     }
-    
-    
-   /* protected override Status OnStart()
-    {
-
-        Vector3 fromBlackboard = Player.Value.transform.position;
-        GameObject freshLookup = GameObject.FindWithTag("PlayerTarget");
-        Vector3 fromTag = freshLookup != null ? freshLookup.transform.position : Vector3.zero;
-        Debug.Log($"[Rally] Blackboard player pos: {fromBlackboard}  |  Fresh tag lookup pos: {fromTag}");
-
-        var player = GameObject.FindWithTag("PlayerTarget");
-        if (player == null) return Status.Failure;
-        if (RallyPoint == null) return Status.Failure;
-
-        RallyPoint.Value = player.transform.position;
-        return Status.Success;
-    }
-    */
-    
-    
 }

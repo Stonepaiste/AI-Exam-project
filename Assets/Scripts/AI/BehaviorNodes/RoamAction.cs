@@ -47,11 +47,11 @@ namespace BirdAI
             if (_elapsed >= interval)
             {
                 var player = GameObject.FindWithTag("PlayerTarget");
-                
+
                 if (player != null)
                 {
-                    float d = Vector3.Distance(Self.Value.transform.position, player.transform.position);
-                    Debug.Log($"[Roam] returning Success — actual distance to player: {d:F1}");
+                    float distanceToPlayer = Vector3.Distance(Self.Value.transform.position, player.transform.position);
+                    Debug.Log($"[Roam] returning Success — actual distance to player: {distanceToPlayer:F1}");
                 }
 
                 Debug.Log("[Roam] returning Success — BT should re-check distance now");

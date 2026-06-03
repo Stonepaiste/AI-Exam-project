@@ -24,26 +24,28 @@ namespace BirdAI
         /// True if a raycast from the bird's eye to `target` isn't blocked by cover.
         public bool CanSeeTarget(Vector3 target)
         {
-            Vector3 from = eye.position;
-            Vector3 dir  = target - from;
-            float dist   = dir.magnitude;
+            Vector3 eyePosition = eye.position;
+            Vector3 directionToTarget = target - eyePosition;
+            float distanceToTarget = directionToTarget.magnitude;
 
-            if (dist < 0.01f) return true;
+            if (distanceToTarget < 0.01f) return true;
 
-            dir /= dist;
+            directionToTarget /= distanceToTarget;
 
-            Vector3 origin     = from + dir * 0.3f;
-            float adjustedDist = dist - 0.3f;
-            if (adjustedDist <= 0f) return true;
+            // Start the ray slightly in front of the eye to avoid self-hits
+            float skinOffset = 0.3f;
+            Vector3 rayOrigin = eyePosition + directionToTarget * skinOffset;
+            float rayDistance = distanceToTarget - skinOffset;
+            if (rayDistance <= 0f) return true;
 
             bool blocked = Physics.Raycast(
-                origin, dir, out RaycastHit hit,
-                adjustedDist, coverMask,
+                rayOrigin, directionToTarget, out RaycastHit hitInfo,
+                rayDistance, coverMask,
                 QueryTriggerInteraction.Ignore);
 
-            Debug.DrawRay(origin, dir * adjustedDist, blocked ? Color.red : Color.green, 0.1f);
+            Debug.DrawRay(rayOrigin, directionToTarget * rayDistance, blocked ? Color.red : Color.green, 0.1f);
             if (blocked)
-                Debug.Log($"[Perception] Blocked by {hit.collider.name} on layer {LayerMask.LayerToName(hit.collider.gameObject.layer)}");
+                Debug.Log($"[Perception] Blocked by {hitInfo.collider.name} on layer {LayerMask.LayerToName(hitInfo.collider.gameObject.layer)}");
 
             return !blocked;
         }

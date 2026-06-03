@@ -8,7 +8,6 @@ namespace BirdAI
         Idle,
         Roam,
         Seek,
-        Hold,
         Dive
     }
 
@@ -26,9 +25,6 @@ namespace BirdAI
         public float roamMaxAltitude = 40f;
         public float roamArriveRadius = 5f;
 
-        [Header("Post-Hit Roam")]
-        public float postHitRoamDuration = 3f;
-
         [Header("Obstacle Avoidance")]
         public float lookAheadDistance = 4f;
         public float avoidanceWeight = 12f;
@@ -41,16 +37,11 @@ namespace BirdAI
         public BirdMode Mode
         {
             get => _mode;
-            set
-            {
-                if (_isPostHitRoaming && value != BirdMode.Roam) return;
-                _mode = value;
-            }
+            set => _mode = value;
         }
 
         private Vector3 _velocity;
         private Vector3 _roamTarget;
-        private bool _isPostHitRoaming;
 
         void Start()
         {
@@ -70,68 +61,30 @@ namespace BirdAI
                 return;
             }
             AvoidObstacles();
-            Vector3 steer = GetSteeringForMode(out float speed);
-            ApplyMotion(steer, speed);
-        }
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.CompareTag("PlayerTarget"))
-                BeginPostHitRoam();
-        }
-
-        public void BeginPostHitRoam()
-        {
-            if (_isPostHitRoaming) return;
-            StartCoroutine(PostHitRoam());
+            Vector3 steeringDirection = GetSteeringForMode(out float currentSpeed);
+            ApplyMotion(steeringDirection, currentSpeed);
         }
         
+
         void AvoidObstacles()
         {
-            if (!Physics.Raycast(transform.position, _velocity.normalized, out RaycastHit hit, lookAheadDistance, obstacleMask))
+            if (!Physics.Raycast(transform.position, _velocity.normalized, out RaycastHit obstacleHit, lookAheadDistance, obstacleMask))
                 return;
 
-            Vector3 steerAway = Vector3.Reflect(_velocity.normalized, hit.normal);
-            _velocity += steerAway * avoidanceWeight * Time.deltaTime;
+            Vector3 reflectedDirection = Vector3.Reflect(_velocity.normalized, obstacleHit.normal);
+            _velocity += reflectedDirection * avoidanceWeight * Time.deltaTime;
         }
-        private IEnumerator PostHitRoam()
+       
+
+        Vector3 GetSteeringForMode(out float currentSpeed)
         {
-            _isPostHitRoaming = true;
-            _mode = BirdMode.Roam;
-
-            Vector3 awayDir = (transform.position - Target).normalized;
-            if (awayDir.sqrMagnitude < 0.01f) awayDir = Random.onUnitSphere;
-            awayDir.y = 0;
-            awayDir.Normalize();
-
-            float h = Random.Range(roamMinAltitude, roamMaxAltitude);
-            _roamTarget = transform.position + awayDir * roamRadius + Vector3.up * h;
-
-            float elapsed = 0f;
-            while (elapsed < postHitRoamDuration)
-            {
-                if ((transform.position - _roamTarget).sqrMagnitude < roamArriveRadius * roamArriveRadius)
-                {
-                    _roamTarget = transform.position + awayDir * roamRadius + Vector3.up * Random.Range(roamMinAltitude, roamMaxAltitude);
-                }
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-
-            _isPostHitRoaming = false;
-            _mode = BirdMode.Roam;
-        }
-
-        Vector3 GetSteeringForMode(out float speed)
-        {
-            speed = cruiseSpeed;
+            currentSpeed = cruiseSpeed;
             switch (_mode)
             {
                 case BirdMode.Roam: return RoamSteering();
                 case BirdMode.Seek: return SeekSteering();
-                case BirdMode.Hold: return HoldSteering();
                 case BirdMode.Dive:
-                    speed = diveSpeed;
+                    currentSpeed = diveSpeed;
                     return DiveSteering();
                 default: return Vector3.zero;
             }
@@ -147,27 +100,26 @@ namespace BirdAI
         }
 
         Vector3 SeekSteering()  => Seek(Target);
-        Vector3 HoldSteering()  => Seek(Target) * 0.6f;
         Vector3 DiveSteering()  => Seek(Target);
 
-        void ApplyMotion(Vector3 steer, float speed)
+        void ApplyMotion(Vector3 steeringDirection, float currentSpeed)
         {
-            Vector3 desired = steer.sqrMagnitude > 0.0001f
-                ? steer.normalized * speed
+            Vector3 desiredVelocity = steeringDirection.sqrMagnitude > 0.0001f
+                ? steeringDirection.normalized * currentSpeed
                 : _velocity;
 
-            float turnRad = turnRateDeg * Mathf.Deg2Rad * Time.deltaTime;
+            float maxTurnRadians = turnRateDeg * Mathf.Deg2Rad * Time.deltaTime;
 
             // FIX: maxMagnitudeDelta must be 0 — we enforce speed separately below.
-            // Passing `speed` here causes the velocity magnitude to swing wildly
+            // Passing speed here causes the velocity magnitude to swing wildly
             // each frame, which makes the bird circle close-range targets.
-            _velocity = Vector3.RotateTowards(_velocity, desired, turnRad, 0f);
+            _velocity = Vector3.RotateTowards(_velocity, desiredVelocity, maxTurnRadians, 0f);
 
             // Enforce exact speed every frame
-            _velocity = _velocity.normalized * speed;
+            _velocity = _velocity.normalized * currentSpeed;
 
             if (!IsFinite(_velocity) || _velocity.sqrMagnitude < 0.0001f)
-                _velocity = Random.onUnitSphere * speed;
+                _velocity = Random.onUnitSphere * currentSpeed;
 
             transform.position += _velocity * Time.deltaTime;
             transform.rotation = Quaternion.LookRotation(_velocity) * Quaternion.Euler(0, 90, 0);
@@ -175,15 +127,15 @@ namespace BirdAI
 
         void PickRoamTarget()
         {
-            Vector2 disc = Random.insideUnitCircle * roamRadius;
-            float h = Random.Range(roamMinAltitude, roamMaxAltitude);
-            _roamTarget = RoamCenter + new Vector3(disc.x, h, disc.y);
+            Vector2 randomOffset = Random.insideUnitCircle * roamRadius;
+            float randomAltitude = Random.Range(roamMinAltitude, roamMaxAltitude);
+            _roamTarget = RoamCenter + new Vector3(randomOffset.x, randomAltitude, randomOffset.y);
         }
 
-        Vector3 Seek(Vector3 target) => target - transform.position;
+        Vector3 Seek(Vector3 targetPosition) => targetPosition - transform.position;
 
-        static bool IsFinite(Vector3 v) =>
-            !(float.IsNaN(v.x)      || float.IsNaN(v.y)      || float.IsNaN(v.z)
-           || float.IsInfinity(v.x) || float.IsInfinity(v.y) || float.IsInfinity(v.z));
+        static bool IsFinite(Vector3 vector) =>
+            !(float.IsNaN(vector.x)      || float.IsNaN(vector.y)      || float.IsNaN(vector.z)
+           || float.IsInfinity(vector.x) || float.IsInfinity(vector.y) || float.IsInfinity(vector.z));
     }
 }

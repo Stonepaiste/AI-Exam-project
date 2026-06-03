@@ -44,9 +44,9 @@ namespace BirdAI
 
             float alpha = Mathf.Lerp(flashMinAlpha, 1f,
                 (Mathf.Sin(Time.time * flashSpeed * Mathf.PI * 2f) + 1f) * 0.5f);
-            var c = textColor;
-            c.a = alpha;
-            _warningText.color = c;
+            var flashColor = textColor;
+            flashColor.a = alpha;
+            _warningText.color = flashColor;
         }
 
         /// Show the warning. Called from the behavior graph.
@@ -67,21 +67,21 @@ namespace BirdAI
 
         void CreateUI()
         {
-            var canvasGO = new GameObject("WarningCanvas");
-            canvasGO.transform.SetParent(transform);
-            var canvas = canvasGO.AddComponent<Canvas>();
+            var canvasObject = new GameObject("WarningCanvas");
+            canvasObject.transform.SetParent(transform);
+            var canvas = canvasObject.AddComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             canvas.sortingOrder = 110;
 
-            var scaler = canvasGO.AddComponent<CanvasScaler>();
+            var scaler = canvasObject.AddComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920, 1080);
-            canvasGO.AddComponent<GraphicRaycaster>();
+            canvasObject.AddComponent<GraphicRaycaster>();
 
-            var textGO = new GameObject("WarningText");
-            textGO.transform.SetParent(canvasGO.transform, false);
+            var textObject = new GameObject("WarningText");
+            textObject.transform.SetParent(canvasObject.transform, false);
 
-            _warningText = textGO.AddComponent<Text>();
+            _warningText = textObject.AddComponent<Text>();
             _warningText.text = warningMessage;
             _warningText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             _warningText.fontSize = fontSize;
@@ -91,18 +91,18 @@ namespace BirdAI
             _warningText.horizontalOverflow = HorizontalWrapMode.Overflow;
             _warningText.verticalOverflow = VerticalWrapMode.Overflow;
 
-            var outline = textGO.AddComponent<Outline>();
+            var outline = textObject.AddComponent<Outline>();
             outline.effectColor = outlineColor;
             outline.effectDistance = new Vector2(2f, -2f);
 
-            var rect = textGO.GetComponent<RectTransform>();
+            var rect = textObject.GetComponent<RectTransform>();
             rect.anchorMin = new Vector2(0.5f, 1f);
             rect.anchorMax = new Vector2(0.5f, 1f);
             rect.pivot = new Vector2(0.5f, 1f);
             rect.anchoredPosition = new Vector2(0f, -80f);
             rect.sizeDelta = new Vector2(800f, 120f);
 
-            textGO.SetActive(false);
+            textObject.SetActive(false);
             _showing = false;
         }
     }

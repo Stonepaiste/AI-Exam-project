@@ -61,8 +61,10 @@ namespace BirdAI
             // Follow any updates the tree makes to the rally point.
             _bird.Motor.Target = RallyPoint.Value;
 
-            float r = ArriveRadius != null ? ArriveRadius.Value : 5f;
-            if ((_bird.transform.position - RallyPoint.Value).sqrMagnitude < r * r)
+            float arriveDistance = ArriveRadius != null ? ArriveRadius.Value : 5f;
+            float distanceSquared = (_bird.transform.position - RallyPoint.Value).sqrMagnitude;
+
+            if (distanceSquared < arriveDistance * arriveDistance)
                 return Status.Success;
 
             return Status.Running;

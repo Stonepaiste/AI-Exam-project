@@ -35,52 +35,52 @@ namespace BirdAI
             var player = PlayerTarget.Instance;
             if (player == null) return;
 
-            float ratio = player.Health / player.maxHealth;
-            _fillImage.rectTransform.anchorMax = new Vector2(ratio, 1f);
-            _fillImage.color = Color.Lerp(damagedColor, healthColor, ratio);
+            float healthPercent = player.Health / player.maxHealth;
+            _fillImage.rectTransform.anchorMax = new Vector2(healthPercent, 1f);
+            _fillImage.color = Color.Lerp(damagedColor, healthColor, healthPercent);
             _healthText.text = $"{Mathf.CeilToInt(player.Health)} / {Mathf.CeilToInt(player.maxHealth)}";
         }
 
         void CreateUI()
         {
-            var canvasGO = new GameObject("HealthBarCanvas");
-            canvasGO.transform.SetParent(transform);
-            _canvas = canvasGO.AddComponent<Canvas>();
+            var canvasObject = new GameObject("HealthBarCanvas");
+            canvasObject.transform.SetParent(transform);
+            _canvas = canvasObject.AddComponent<Canvas>();
             _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             _canvas.sortingOrder = 100;
-            canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-            canvasGO.AddComponent<GraphicRaycaster>();
+            canvasObject.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            canvasObject.AddComponent<GraphicRaycaster>();
 
-            var bgGO = new GameObject("Background");
-            bgGO.transform.SetParent(canvasGO.transform, false);
-            _backgroundImage = bgGO.AddComponent<Image>();
+            var backgroundObject = new GameObject("Background");
+            backgroundObject.transform.SetParent(canvasObject.transform, false);
+            _backgroundImage = backgroundObject.AddComponent<Image>();
             _backgroundImage.color = backgroundColor;
-            var bgRect = bgGO.GetComponent<RectTransform>();
-            bgRect.anchorMin = new Vector2(0f, 1f);
-            bgRect.anchorMax = new Vector2(0f, 1f);
-            bgRect.pivot = new Vector2(0f, 1f);
-            bgRect.anchoredPosition = new Vector2(screenOffset.x, -screenOffset.y);
-            bgRect.sizeDelta = new Vector2(barWidth, barHeight);
+            var backgroundRect = backgroundObject.GetComponent<RectTransform>();
+            backgroundRect.anchorMin = new Vector2(0f, 1f);
+            backgroundRect.anchorMax = new Vector2(0f, 1f);
+            backgroundRect.pivot = new Vector2(0f, 1f);
+            backgroundRect.anchoredPosition = new Vector2(screenOffset.x, -screenOffset.y);
+            backgroundRect.sizeDelta = new Vector2(barWidth, barHeight);
 
-            var fillGO = new GameObject("Fill");
-            fillGO.transform.SetParent(bgGO.transform, false);
-            _fillImage = fillGO.AddComponent<Image>();
+            var fillObject = new GameObject("Fill");
+            fillObject.transform.SetParent(backgroundObject.transform, false);
+            _fillImage = fillObject.AddComponent<Image>();
             _fillImage.color = healthColor;
-            var fillRect = fillGO.GetComponent<RectTransform>();
+            var fillRect = fillObject.GetComponent<RectTransform>();
             fillRect.anchorMin = Vector2.zero;
             fillRect.anchorMax = Vector2.one;
             fillRect.offsetMin = Vector2.zero;
             fillRect.offsetMax = Vector2.zero;
 
-            var textGO = new GameObject("HealthText");
-            textGO.transform.SetParent(bgGO.transform, false);
-            _healthText = textGO.AddComponent<Text>();
+            var textObject = new GameObject("HealthText");
+            textObject.transform.SetParent(backgroundObject.transform, false);
+            _healthText = textObject.AddComponent<Text>();
             _healthText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
             _healthText.alignment = TextAnchor.MiddleCenter;
             _healthText.fontSize = 16;
             _healthText.color = Color.white;
             _healthText.fontStyle = FontStyle.Bold;
-            var textRect = textGO.GetComponent<RectTransform>();
+            var textRect = textObject.GetComponent<RectTransform>();
             textRect.anchorMin = Vector2.zero;
             textRect.anchorMax = Vector2.one;
             textRect.offsetMin = Vector2.zero;

@@ -42,25 +42,25 @@ namespace BirdAI
             _bird = Self.Value.GetComponent<Bird>();
             if (_bird == null) return Status.Failure;
 
-            float dist = RetreatDistance != null ? RetreatDistance.Value : 60f;
-            float minAlt = MinAltitude != null ? MinAltitude.Value : 15f;
-            float maxAlt = MaxAltitude != null ? MaxAltitude.Value : 40f;
+            float retreatDist = RetreatDistance != null ? RetreatDistance.Value : 60f;
+            float minAltitude = MinAltitude != null ? MinAltitude.Value : 15f;
+            float maxAltitude = MaxAltitude != null ? MaxAltitude.Value : 40f;
 
             // Pick a direction away from the player, flatten to horizontal,
             // then add a random altitude.
-            Vector3 awayDir = (_bird.transform.position - Player.Value.transform.position);
-            awayDir.y = 0f;
-            if (awayDir.sqrMagnitude < 0.01f)
-                awayDir = UnityEngine.Random.insideUnitSphere;
-            awayDir.Normalize();
+            Vector3 directionAwayFromPlayer = (_bird.transform.position - Player.Value.transform.position);
+            directionAwayFromPlayer.y = 0f;
+            if (directionAwayFromPlayer.sqrMagnitude < 0.01f)
+                directionAwayFromPlayer = UnityEngine.Random.insideUnitSphere;
+            directionAwayFromPlayer.Normalize();
 
             // Add some random spread so birds don't all retreat on the same line.
-            Vector3 spread = UnityEngine.Random.insideUnitSphere;
-            spread.y = 0f;
-            awayDir = (awayDir + spread * 0.4f).normalized;
+            Vector3 randomSpread = UnityEngine.Random.insideUnitSphere;
+            randomSpread.y = 0f;
+            directionAwayFromPlayer = (directionAwayFromPlayer + randomSpread * 0.4f).normalized;
 
-            float h = UnityEngine.Random.Range(minAlt, maxAlt);
-            _retreatTarget = _bird.transform.position + awayDir * dist + Vector3.up * h;
+            float randomAltitude = UnityEngine.Random.Range(minAltitude, maxAltitude);
+            _retreatTarget = _bird.transform.position + directionAwayFromPlayer * retreatDist + Vector3.up * randomAltitude;
 
             _bird.Motor.Mode = BirdMode.Seek;
             _bird.Motor.Target = _retreatTarget;
@@ -76,8 +76,10 @@ namespace BirdAI
             // else briefly overwrites Target.
             _bird.Motor.Target = _retreatTarget;
 
-            float r = ArriveRadius != null ? ArriveRadius.Value : 8f;
-            if ((_bird.transform.position - _retreatTarget).sqrMagnitude < r * r)
+            float arriveDistance = ArriveRadius != null ? ArriveRadius.Value : 8f;
+            float distanceSquared = (_bird.transform.position - _retreatTarget).sqrMagnitude;
+
+            if (distanceSquared < arriveDistance * arriveDistance)
                 return Status.Success;
 
             return Status.Running;
