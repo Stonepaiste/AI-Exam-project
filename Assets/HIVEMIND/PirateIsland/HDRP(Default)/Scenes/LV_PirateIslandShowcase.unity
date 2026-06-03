@@ -1573,6 +1573,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1279535851}
     m_Modifications:
+    - target: {fileID: 4601912617053955702, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -1624,6 +1628,10 @@ PrefabInstance:
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.483
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6904611457161214688, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_Name
@@ -29438,6 +29446,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1279535851}
     m_Modifications:
+    - target: {fileID: 4601912617053955702, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -29489,6 +29501,10 @@ PrefabInstance:
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.483
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6904611457161214688, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_Name
@@ -410263,6 +410279,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1279535851}
     m_Modifications:
+    - target: {fileID: 4601912617053955702, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 6083046740679586627, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: 'managedReferences[8147561536255426647]'
       value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[UnityEngine.GameObject,
@@ -410356,6 +410376,10 @@ PrefabInstance:
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.483
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6904611457161214688, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_Name
@@ -414215,17 +414239,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1279535851}
     m_Modifications:
+    - target: {fileID: 4601912617053955702, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: avoidanceWeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601912617053955702, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: lookAheadDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601912617053955702, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.63
+      value: -16.74
       objectReference: {fileID: 0}
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.9
+      value: 20.9
       objectReference: {fileID: 0}
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31.26
+      value: -33
       objectReference: {fileID: 0}
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -414254,6 +414290,18 @@ PrefabInstance:
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.483
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: avoidanceWeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: lookAheadDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6904611457161214688, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_Name
@@ -427015,6 +427063,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1279535851}
     m_Modifications:
+    - target: {fileID: 4601912617053955702, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -427066,6 +427118,10 @@ PrefabInstance:
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.483
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6904611457161214688, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_Name
@@ -429212,6 +429268,10 @@ PrefabInstance:
       propertyPath: groundDistance
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4601912617053955702, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -251.5
@@ -429251,6 +429311,10 @@ PrefabInstance:
     - target: {fileID: 6096126931917332570, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.483
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6904611457161214688, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: m_Name

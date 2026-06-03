@@ -30,6 +30,12 @@ public class BoidsController : MonoBehaviour
 	public float alignmentWeight;
 	public float cohesionWeight;
 	public float boidPositionWeight;
+	
+	[Space(5)]
+	[Header("Avoidance")]
+	public float lookAheadDistance = 4f;
+	public float avoidanceWeight = 12f;
+	public LayerMask obstacleMask;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -57,35 +63,37 @@ public class BoidsController : MonoBehaviour
 	{
 		Vector3 centralPos = FindCentralPos(boids_pos);
 
-		//Compute all stuff here per each entity
-		for (int i = 0; i< boids_vel.Length; i++)
+		for (int i = 0; i < boids_vel.Length; i++)
 		{			
-			//Apply Repulsion					
 			Vector3 totalRepulsion = SteerAway(boids_pos[i].position, boids_pos, i);		
 			boids_vel[i] += totalRepulsion * separationWeight;
 
-			//Apply alignment
 			Vector3 alignmentSteer = Align(boids_pos[i].position, boids_vel, boids_pos, i) - boids_vel[i];			
 			boids_vel[i] += alignmentSteer * alignmentWeight;
-			
-			//Apply cohesion or finding the central position to each boid with a weight
+        
 			boids_vel[i] += GetDirection(boids_pos[i].position, centralPos) * cohesionWeight;
-
-			//Allow you to control were do boids want to go and with how much intensity
 			boids_vel[i] += GetDirection(boids_pos[i].position, transform.position).normalized * boidPositionWeight;
 
-			//Avoid ground or obstacels
+			// Obstacle avoidance
+			boids_vel[i] += AvoidObstacles(boids_pos[i].position, boids_vel[i]);
+
 			boids_vel[i] += AvoidGround(boids_pos[i].position);
 
-			//Clamps boids velocitiy to not exeed maxSpeed
 			boids_vel[i] = Vector3.ClampMagnitude(boids_vel[i], maxSpeed);
 
-			//If vel below minSpeed set minspeed
-			if (boids_vel[i].magnitude < minSpeed )
-			{
+			if (boids_vel[i].magnitude < minSpeed)
 				boids_vel[i] = boids_vel[i].normalized * minSpeed;
-			}
 		}
+	}
+
+	Vector3 AvoidObstacles(Vector3 pos, Vector3 vel)
+	{
+		if (vel.sqrMagnitude < 0.0001f) return Vector3.zero;
+
+		if (!Physics.Raycast(pos, vel.normalized, out RaycastHit hit, lookAheadDistance, obstacleMask))
+			return Vector3.zero;
+
+		return Vector3.Reflect(vel.normalized, hit.normal) * avoidanceWeight;
 	}
 
 	Vector3 AvoidGround(Vector3 pos)

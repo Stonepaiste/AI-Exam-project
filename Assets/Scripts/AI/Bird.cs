@@ -2,12 +2,12 @@ using UnityEngine;
 
 namespace BirdAI
 {
-    /// The glue component for a single bird.
+    /// The glue component for a single boid.
     ///
     /// Keeps references to Motor and Perception so behavior-tree nodes have a
     /// single entry point.
     ///
-    /// Require component makes sure the scripts are 
+    /// Require component makes sure the scripts are setup correctly 
     [RequireComponent(typeof(BirdMotor))]
     [RequireComponent(typeof(BirdPerception))]
     public class Bird : MonoBehaviour
