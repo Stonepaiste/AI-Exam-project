@@ -5,7 +5,9 @@ namespace BirdAI
     /// The glue component for a single bird.
     ///
     /// Keeps references to Motor and Perception so behavior-tree nodes have a
-    /// single entry point. 
+    /// single entry point.
+    ///
+    /// Require component makes sure the scripts are 
     [RequireComponent(typeof(BirdMotor))]
     [RequireComponent(typeof(BirdPerception))]
     public class Bird : MonoBehaviour
