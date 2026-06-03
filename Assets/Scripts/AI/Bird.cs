@@ -5,8 +5,7 @@ namespace BirdAI
     /// The glue component for a single bird.
     ///
     /// Keeps references to Motor and Perception so behavior-tree nodes have a
-    /// single entry point. Registers itself with the HiveMind so the hive
-    /// can count rally-ready birds, query neighbors, etc.
+    /// single entry point. 
     [RequireComponent(typeof(BirdMotor))]
     [RequireComponent(typeof(BirdPerception))]
     public class Bird : MonoBehaviour

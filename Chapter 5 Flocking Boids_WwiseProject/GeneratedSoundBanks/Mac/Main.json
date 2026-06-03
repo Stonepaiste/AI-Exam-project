@@ -10,11 +10,27 @@
     "Type": "User",
     "GUID": "{42C10DD2-0C96-4BC1-A8CF-5F0029EF151D}",
     "Language": "SFX",
-    "Hash": "{65AE3999-37F8-6C45-C791-177C8748778B}",
+    "Hash": "{710C5711-370A-FE1C-07A2-E05237416199}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
     "Path": "Main.bnk",
     "Media": [
+     {
+      "Id": "196887106",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Oceanside Calm.wav",
+      "CachePath": "E9/{E97B8F04-10DC-946E-EE32-926E721779B4}.wem"
+     },
+     {
+      "Id": "276038614",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Rain of Fire-16bit.wav",
+      "CachePath": "5B/{5B08523C-8CAA-64CC-71EC-FE67256C2989}.wem"
+     },
      {
       "Id": "763099093",
       "Language": "SFX",
@@ -22,9 +38,61 @@
       "Location": "Memory",
       "ShortName": "freesound_community-raven-manymp3-14529.wav",
       "CachePath": "2C/{2C45FBBD-107F-D47F-2B4F-439FDBAB731C}.wem"
+     },
+     {
+      "Id": "1053617187",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Beach Front.wav",
+      "CachePath": "8D/{8D0DD828-CA79-58D7-B1D6-95B4DE744327}.wem"
      }
     ],
     "Events": [
+     {
+      "Id": "3591878379",
+      "Name": "Play_Beach_Front",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Beach_Front",
+      "GUID": "{48BAFB5A-73BB-40B5-A262-B0ACF7F8C7CC}",
+      "MaxAttenuation": "130",
+      "DurationType": "OneShot",
+      "DurationMin": "488.5",
+      "DurationMax": "488.5",
+      "MediaRefs": [
+       {
+        "Id": "1053617187"
+       }
+      ]
+     },
+     {
+      "Id": "2920986385",
+      "Name": "Play_Oceanside_Calm",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Oceanside_Calm",
+      "GUID": "{165F5C77-8907-4CD1-89BA-9408215D5D17}",
+      "MaxAttenuation": "50",
+      "DurationType": "OneShot",
+      "DurationMin": "346",
+      "DurationMax": "346",
+      "MediaRefs": [
+       {
+        "Id": "196887106"
+       }
+      ]
+     },
+     {
+      "Id": "4025252812",
+      "Name": "Play_Rain_of_Fire_16bit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Play_Rain_of_Fire_16bit",
+      "GUID": "{A6767C85-7C1F-4E0F-9DB2-AA79EFA880F4}",
+      "DurationType": "OneShot",
+      "DurationMin": "3.2020445",
+      "DurationMax": "3.2020445",
+      "MediaRefs": [
+       {
+        "Id": "276038614"
+       }
+      ]
+     },
      {
       "Id": "247295575",
       "Name": "Play_Ravens",
@@ -40,6 +108,6 @@
     ]
    }
   ],
-  "FileHash": "{9E334EE8-B39B-A14D-4935-D2B995F7CDC9}"
+  "FileHash": "{B6088D79-7091-FA49-B11C-B0544ADC9CF2}"
  }
 }

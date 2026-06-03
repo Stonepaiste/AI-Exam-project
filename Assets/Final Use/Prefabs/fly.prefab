@@ -125,15 +125,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 43687b74326ec483fbba510e43a3edd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.63
+      value: -251.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 43687b74326ec483fbba510e43a3edd7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.9
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 43687b74326ec483fbba510e43a3edd7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -31.26
+      value: 233.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 43687b74326ec483fbba510e43a3edd7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1454,7 +1454,8 @@ MonoBehaviour:
   m_Graph: {fileID: 5210657082776381510, guid: 2cf51ba5386bb46129147af0920293ba, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 8147561517605454709
-  - rid: 8147561536255427158
+  - rid: 8147561536255426646
+  - rid: 8147561537483833429
   m_OriginalGraph: {fileID: 0}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -1469,7 +1470,15 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 6904611457161214688}
-    - rid: 8147561536255427158
+    - rid: 8147561536255426646
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 18292522217457957170
+          m_Value1: 7997980139925234343
+        Name: List of after attack points
+        m_Value: {fileID: 0}
+    - rid: 8147561537483833429
       type: {class: 'BlackboardVariable`1[[UnityEngine.ParticleSystem, UnityEngine.ParticleSystemModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:

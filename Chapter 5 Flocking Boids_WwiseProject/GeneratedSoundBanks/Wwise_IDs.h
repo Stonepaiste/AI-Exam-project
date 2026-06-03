@@ -13,6 +13,9 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID PLAY_BEACH_FRONT = 3591878379U;
+        static const AkUniqueID PLAY_OCEANSIDE_CALM = 2920986385U;
+        static const AkUniqueID PLAY_RAIN_OF_FIRE_16BIT = 4025252812U;
         static const AkUniqueID PLAY_RAVENS = 247295575U;
     } // namespace EVENTS
 

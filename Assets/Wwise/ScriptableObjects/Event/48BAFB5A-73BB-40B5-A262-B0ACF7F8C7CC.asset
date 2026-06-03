@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d5e311c78bc4a96a523e95aae0ac44, type: 3}
+  m_Name: 48BAFB5A-73BB-40B5-A262-B0ACF7F8C7CC
+  m_EditorClassIdentifier: AK.Wwise.Unity.API.WwiseTypes::WwiseEventReference
+  objectName: Play_Beach_Front
+  id: 3591878379
+  guid: 48BAFB5A-73BB-40B5-A262-B0ACF7F8C7CC
+  IsInUserDefinedSoundBank: 1
