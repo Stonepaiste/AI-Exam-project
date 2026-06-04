@@ -8,7 +8,7 @@ namespace BirdAI
 {
     /// After a dive, fly to a retreat point far from the player before
     /// the bird is allowed to re-enter the detection/attack loop.
-    /// Uses BirdMotor (Seek mode) — no NavMeshAgent.
+    /// Uses MasterBird (Seek mode) — no NavMeshAgent.
     [Serializable, GeneratePropertyBag]
     [NodeDescription(
         name: "Fly To Retreat Point",

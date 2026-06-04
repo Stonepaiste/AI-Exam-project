@@ -45,7 +45,7 @@ namespace BirdAI
             _bird = Self.Value.GetComponent<Bird>();
             if (_bird == null || _bird.Motor == null)
             {
-                Debug.LogWarning("[FlyToRallyPoint] Self has no Bird/BirdMotor component.");
+                Debug.LogWarning("[FlyToRallyPoint] Self has no Bird/MasterBird component.");
                 return Status.Failure;
             }
 

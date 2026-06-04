@@ -2,27 +2,14 @@ using UnityEngine;
 
 namespace BirdAI
 {
-    /// Tag component that tells the bird AI "this is the player".
-    /// Exposes the transforms that birds raycast against for line-of-sight
-    /// (torso + head), and the callback for taking damage from dive hits.
-    ///
-    /// Setup: drop on the root of the ThirdPersonController prefab instance
-    /// in your scene. Assign CenterMass (torso bone or child empty) and
-    /// Head (head bone or child empty). If both are left null they fall back
-    /// to the transform itself.
+    // playertag component that our bird AI can read and call. Also holds the player health method 
     public class PlayerTarget : MonoBehaviour
     {
         private static PlayerTarget _instance;
         public static PlayerTarget Instance => _instance;
-
-        [Header("LOS Anchors")]
-        [Tooltip("Torso point birds raycast against.")]
         public Transform centerMass;
-
-        [Tooltip("Head point birds raycast against (second LOS ray).")]
         public Transform head;
-
-        [Header("Health")]
+        
         public float maxHealth = 100f;
 
         public float Health { get; private set; }
@@ -42,7 +29,7 @@ namespace BirdAI
             if (_instance == this) _instance = null;
         }
 
-        /// Called by birds when a dive pass connects.
+        /// Called by birds when a dive pass connects. The damage amount is set in bird script. (the bridge script)
         public void TakeDamage(float amount)
         {
             if (!IsAlive) return;

@@ -17,9 +17,9 @@ namespace BirdAI
     {
         protected override Status OnStart()
         {
-            if (TargetedWarningUI.Instance != null)
+            if (WarningDisplay.Instance != null)
             {
-                TargetedWarningUI.Instance.Hide();
+                WarningDisplay.Instance.Hide();
             }
 
             return Status.Success;

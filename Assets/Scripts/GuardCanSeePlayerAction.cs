@@ -29,6 +29,8 @@ namespace BirdAI
         private float _losLostTime;
         private bool _hadLOS;
 
+       
+
         protected override Status OnStart()
         {
             if (Self?.Value == null) return Status.Failure;
@@ -60,6 +62,7 @@ namespace BirdAI
                 // Reset grace timer whenever we have LOS
                 _hadLOS = true;
                 _losLostTime = 0f;
+                
                 return Status.Running;
             }
 
@@ -68,6 +71,7 @@ namespace BirdAI
             {
                 // First frame without LOS — start the grace timer
                 _hadLOS = false;
+                WarningDisplay.Instance?.Hide();
                 _losLostTime = Time.time;
             }
 

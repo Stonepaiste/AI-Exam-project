@@ -14,14 +14,14 @@ public class BoidsController : MonoBehaviour
 	[Range(0,1)] public float maxSteerForce;
 	public float maxSpeed;
 	public float minSpeed;
-	public float groundHeight;
+	//public float groundHeight;
 
 	[Space(5)]
 	[Header("Boid Perception")]
 	//Boids Separation 
 	public float perceptionRadius;
 	public float separationDistance;
-	public float groundDistance;
+	//public float groundDistance;
 
 	[Space(5)]
 	[Header("Boid Rules Weights")]
@@ -77,7 +77,7 @@ public class BoidsController : MonoBehaviour
 			// Obstacle avoidance
 			boids_vel[i] += AvoidObstacles(boids_pos[i].position, boids_vel[i]);
 
-			boids_vel[i] += AvoidGround(boids_pos[i].position);
+			//boids_vel[i] += AvoidGround(boids_pos[i].position);
 
 			boids_vel[i] = Vector3.ClampMagnitude(boids_vel[i], maxSpeed);
 
@@ -96,7 +96,7 @@ public class BoidsController : MonoBehaviour
 		return Vector3.Reflect(vel.normalized, hit.normal) * avoidanceWeight;
 	}
 
-	Vector3 AvoidGround(Vector3 pos)
+	/* Vector3 AvoidGround(Vector3 pos)
 	{
 		Vector3 force = Vector3.zero;
 
@@ -108,6 +108,7 @@ public class BoidsController : MonoBehaviour
 		}
 		return force;
 	}
+	*/
 
 	/// <summary>
 	/// Sters away from all provided positions with total sum of directions

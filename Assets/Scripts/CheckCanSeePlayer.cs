@@ -7,7 +7,7 @@ using Action = Unity.Behavior.Action;
 namespace BirdAI
 {
     /// Checks if this bird currently has line-of-sight to the player.
-    /// Looks up the player by PlayerTarget singleton, then raycasts.
+    /// Looks up the player by PlayerTarget, then raycasts.
     /// Returns Success if visible, Failure otherwise.
     [Serializable, GeneratePropertyBag]
     [NodeDescription(
@@ -34,10 +34,5 @@ namespace BirdAI
                 ? Status.Success
                 : Status.Failure;
         }
-        
-        
-        
     }
-    
-    
 }

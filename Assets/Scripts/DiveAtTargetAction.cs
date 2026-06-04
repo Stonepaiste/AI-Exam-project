@@ -1,3 +1,5 @@
+// Generative AI (claude) has been used to aid in writing this code.
+
 using System;
 using Unity.Behavior;
 using Unity.Properties;
@@ -21,6 +23,8 @@ namespace BirdAI
         private Vector3 _committedTarget;
         private bool _hit;
 
+        // Checks for player and self exists at Onstart in the behavior Graph
+        // Gets the bird component script so it can call the damage method.
         protected override Status OnStart()
         {
             if (Self?.Value == null) return Status.Failure;
@@ -32,9 +36,6 @@ namespace BirdAI
 
             var bird = Self.Value.GetComponent<Bird>();
             if (bird == null) return Status.Failure;
-            
-            _committedTarget = Player.Value.transform.position;
-            Debug.Log($"[Dive] starting — player at {_committedTarget}, bird at {bird.transform.position}, distance {Vector3.Distance(_committedTarget, bird.transform.position):F1}");
 
             // Lock position at dive start — player can dodge by moving after this
             _committedTarget = Player.Value.transform.position;
@@ -45,7 +46,8 @@ namespace BirdAI
 
             return Status.Running;
         }
-
+// Checks if the bird has reached the target (committed target) We don't set the target to the player
+// so the player still has a change to get away after being spottet.
         protected override Status OnUpdate()
         {
             var bird = Self.Value.GetComponent<Bird>();
@@ -60,6 +62,8 @@ namespace BirdAI
                 bird.ApplyDiveHit();
                 _hit = true;
             }
+// Checks if the bird has passed the committed target.
+// Without this they sometimes never fly away gettin stuck in a circle loop. 
 
             float passedByRadius = hitRadius * 4f;
             bool closeEnough = distanceSquared < passedByRadius * passedByRadius;
