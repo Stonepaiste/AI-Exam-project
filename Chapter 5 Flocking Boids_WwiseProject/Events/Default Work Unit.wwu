@@ -14,6 +14,39 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Play_Beach_Front" ID="{48BAFB5A-73BB-40B5-A262-B0ACF7F8C7CC}">
+					<ChildrenList>
+						<Action Name="" ID="{CFE6F95B-FDB0-4870-BA03-28EAD2B3AC97}" ShortID="144250724">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Beach Front" ID="{21E9F6B8-F029-48F4-A83E-F6AA82DFC01B}" WorkUnitID="{25C9BC12-668C-4B3F-8B51-8A4CAD6AE3F1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Oceanside_Calm" ID="{165F5C77-8907-4CD1-89BA-9408215D5D17}">
+					<ChildrenList>
+						<Action Name="" ID="{8EC12E83-91D5-4243-888D-84F2437ED234}" ShortID="480049299">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Oceanside Calm" ID="{D96BDA29-8536-40D9-A9DE-AB1CE779B8FB}" WorkUnitID="{25C9BC12-668C-4B3F-8B51-8A4CAD6AE3F1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Play_Rain_of_Fire_16bit" ID="{A6767C85-7C1F-4E0F-9DB2-AA79EFA880F4}">
+					<ChildrenList>
+						<Action Name="" ID="{E1C488CF-4A8D-449F-92D1-C825D6B588E9}" ShortID="531446097">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Rain of Fire-16bit" ID="{B2AA4E29-5893-4114-BDE9-453DA9A6CB8B}" WorkUnitID="{25C9BC12-668C-4B3F-8B51-8A4CAD6AE3F1}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

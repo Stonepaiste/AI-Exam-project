@@ -5,6 +5,9 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{42C10DD2-0C96-4BC1-A8CF-5F0029EF151D}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_Beach_Front" ID="{48BAFB5A-73BB-40B5-A262-B0ACF7F8C7CC}" WorkUnitID="{7648E0E4-2DCF-4915-AE73-37286F510422}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Oceanside_Calm" ID="{165F5C77-8907-4CD1-89BA-9408215D5D17}" WorkUnitID="{7648E0E4-2DCF-4915-AE73-37286F510422}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Rain_of_Fire_16bit" ID="{A6767C85-7C1F-4E0F-9DB2-AA79EFA880F4}" WorkUnitID="{7648E0E4-2DCF-4915-AE73-37286F510422}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Ravens" ID="{6C79B09B-AF6F-4F4D-8063-E988CB9DB271}" WorkUnitID="{7648E0E4-2DCF-4915-AE73-37286F510422}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
