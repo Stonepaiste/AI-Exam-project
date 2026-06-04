@@ -1,4 +1,3 @@
-// Generative AI (claude) has been used to aid in writing this code.
 
 using System;
 using Unity.Behavior;
@@ -46,8 +45,8 @@ namespace BirdAI
 
             return Status.Running;
         }
-// Checks if the bird has reached the target (committed target) We don't set the target to the player
-// so the player still has a change to get away after being spottet.
+            // Checks if the bird has reached the target (committed target) We don't set the target to the player
+            // so the player still has a change to get away after being spottet.
         protected override Status OnUpdate()
         {
             var bird = Self.Value.GetComponent<Bird>();
@@ -62,8 +61,8 @@ namespace BirdAI
                 bird.ApplyDiveHit();
                 _hit = true;
             }
-// Checks if the bird has passed the committed target.
-// Without this they sometimes never fly away gettin stuck in a circle loop. 
+            // Checks if the bird has passed the committed target.
+            // Without this they sometimes never fly away gettin stuck in a circle loop. 
 
             float passedByRadius = hitRadius * 4f;
             bool closeEnough = distanceSquared < passedByRadius * passedByRadius;

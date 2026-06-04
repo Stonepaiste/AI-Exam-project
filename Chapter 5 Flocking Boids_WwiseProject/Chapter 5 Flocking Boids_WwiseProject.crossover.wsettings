@@ -15,6 +15,7 @@
 					<ValueList>
 						<Value Platform="Linux"></Value>
 						<Value Platform="Windows"></Value>
+						<Value Platform="Web"></Value>
 						<Value Platform="Mac"></Value>
 					</ValueList>
 				</Property>
@@ -22,6 +23,7 @@
 					<ValueList>
 						<Value Platform="Linux">GeneratedSoundBanks\Linux\</Value>
 						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
+						<Value Platform="Web">GeneratedSoundBanks\Web\</Value>
 						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
 					</ValueList>
 				</Property>
@@ -30,7 +32,7 @@
 				<Property Name="General\LatestPlatform" Type="string" Value="Mac"/>
 				<Property Name="General\SourceControlPluginID" Type="string" Value="{C403A906-0C19-4ED5-808E-748707065301}"/>
 				<Property Name="GenerateSoundBanks\x64_SelectedLanguages" Type="string" Value=""/>
-				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value="hc1nDWCdF0OoxBNtoM7H0fUB7IyjF/NPgyKycIP56gN/xWPjq8KfRZDbL4uuIVzL"/>
+				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value="hc1nDWCdF0OoxBNtoM7H0fUB7IyjF/NPgyKycIP56gO72xzGlz4USowjoDMrzoRyf8Vj46vCn0WQ2y+LriFcyw=="/>
 				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value=""/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{00000000-0000-0000-0000-000000000000}"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
@@ -84,7 +86,7 @@
 				<Property Name="ProjectExplorer\SelectionChannel_255\x64_SoundBanks_LastExpandedState" Type="string" Value="P2eOyUyiqEiWDxBWX/5woA=="/>
 				<Property Name="ProjectExplorer\SelectionChannel_2\Audio_FocusedObject" Type="string" Value="{B2AA4E29-5893-4114-BDE9-453DA9A6CB8B}"/>
 				<Property Name="ProjectExplorer\SelectionChannel_2\CurrentSearch" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\SelectionChannel_2\CurrentTab" Type="int32" Value="1"/>
+				<Property Name="ProjectExplorer\SelectionChannel_2\CurrentTab" Type="int32" Value="2"/>
 				<Property Name="ProjectExplorer\SelectionChannel_2\Events_FocusedObject" Type="string" Value="{A6767C85-7C1F-4E0F-9DB2-AA79EFA880F4}"/>
 				<Property Name="ProjectExplorer\SelectionChannel_2\Game Syncs_FocusedObject" Type="string" Value="{CB6175F1-6080-4A23-92EF-0807E304D0C1}"/>
 				<Property Name="ProjectExplorer\SelectionChannel_2\Queries_FocusedObject" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
@@ -108,6 +110,7 @@
 					<ValueList>
 						<Value Platform="Linux">GeneratedSoundBanks\Linux\</Value>
 						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
+						<Value Platform="Web">GeneratedSoundBanks\Web\</Value>
 						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
 					</ValueList>
 				</Property>
@@ -115,6 +118,7 @@
 					<ValueList>
 						<Value Platform="Linux"></Value>
 						<Value Platform="Windows"></Value>
+						<Value Platform="Web"></Value>
 						<Value Platform="Mac"></Value>
 					</ValueList>
 				</Property>
@@ -122,6 +126,7 @@
 					<ValueList>
 						<Value Platform="Linux"></Value>
 						<Value Platform="Windows"></Value>
+						<Value Platform="Web"></Value>
 						<Value Platform="Mac"></Value>
 					</ValueList>
 				</Property>
@@ -129,6 +134,7 @@
 					<ValueList>
 						<Value Platform="Linux"></Value>
 						<Value Platform="Windows"></Value>
+						<Value Platform="Web"></Value>
 						<Value Platform="Mac"></Value>
 					</ValueList>
 				</Property>
@@ -136,6 +142,7 @@
 					<ValueList>
 						<Value Platform="Linux"></Value>
 						<Value Platform="Windows"></Value>
+						<Value Platform="Web"></Value>
 						<Value Platform="Mac"></Value>
 					</ValueList>
 				</Property>

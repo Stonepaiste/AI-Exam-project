@@ -48,7 +48,7 @@ namespace BirdAI
                 Debug.LogWarning("[FlyToRallyPoint] Self has no Bird/MasterBird component.");
                 return Status.Failure;
             }
-
+        // sets the mode to seek mode flying towards the rally point 
             _bird.Motor.Mode = BirdMode.Seek;
             _bird.Motor.Target = RallyPoint.Value;
             return Status.Running;

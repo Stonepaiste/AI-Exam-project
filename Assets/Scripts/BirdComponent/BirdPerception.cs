@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace BirdAI
 {
-    /// Minimal raycast helper. Given a target position, returns whether
-    /// the bird has clear line-of-sight to it (uses cover layers as blockers).
-    ///
-    /// All decision logic — distance, FOV, who counts as "the player",
-    /// memory of last-known-position — lives in the behavior tree.
+    // Minimal raycast helper. Given a target position, returns whether
+    // the bird has clear line-of-sight to it (uses mask layers as blockers).
+    
+    // All decision logic — distance, FOV, who counts as "the player",
+    // memory of last-known-position — lives in the behavior tree. (rally point)
     public class BirdPerception : MonoBehaviour
     {
         [Header("Vision")]

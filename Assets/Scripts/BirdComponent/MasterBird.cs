@@ -46,7 +46,7 @@ namespace BirdAI
 
         // Called once when the bird spawns.
         // Saves the starting position as the roam center, picks a first
-        // random wander target, and gives the bird an initial velocity
+        // random wander target, and gives the bird a start velocity
         // so it starts moving right away.
         void Start()
         {

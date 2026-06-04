@@ -6,8 +6,8 @@ using Action = Unity.Behavior.Action;
 
 namespace BirdAI
 {
-    /// Default / fallback behavior: the bird wanders solo around its spawn area.
-    /// Returns Success periodically so the parent BT can re-evaluate distance/LOS.
+    // Default / fallback behavior: the bird wanders solo around its spawn area.
+    // 
     [Serializable, GeneratePropertyBag]
     [NodeDescription(
         name: "Roam",
@@ -19,7 +19,7 @@ namespace BirdAI
     {
         [SerializeReference] public BlackboardVariable<GameObject> Self;
         
-        [SerializeReference] public BlackboardVariable<float> RecheckInterval;
+       // [SerializeReference] public BlackboardVariable<float> RecheckInterval;
         
 
         private float _elapsed;
@@ -38,9 +38,6 @@ namespace BirdAI
 
         protected override Status OnUpdate()
         {
-            
-            
-            
             return Status.Running;
         }
     }

@@ -9,6 +9,7 @@
 							<ValueList>
 								<Value Platform="Linux">4</Value>
 								<Value Platform="Windows">4</Value>
+								<Value Platform="Web">4</Value>
 								<Value Platform="Mac">4</Value>
 							</ValueList>
 						</Property>
@@ -16,6 +17,7 @@
 							<ValueList>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="Windows">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Mac">0</Value>
 							</ValueList>
 						</Property>
@@ -23,6 +25,7 @@
 							<ValueList>
 								<Value Platform="Linux">48000</Value>
 								<Value Platform="Windows">48000</Value>
+								<Value Platform="Web">48000</Value>
 								<Value Platform="Mac">48000</Value>
 							</ValueList>
 						</Property>
@@ -30,6 +33,7 @@
 							<ValueList>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="Windows">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Mac">0</Value>
 							</ValueList>
 						</Property>
@@ -37,6 +41,7 @@
 							<ValueList>
 								<Value Platform="Linux">0</Value>
 								<Value Platform="Windows">0</Value>
+								<Value Platform="Web">0</Value>
 								<Value Platform="Mac">0</Value>
 							</ValueList>
 						</Property>
@@ -47,6 +52,9 @@
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Windows">
 							<ConversionPlugin Name="" ID="{085813CD-54CF-49D3-B412-F57592474A2A}" PluginName="PCM" CompanyID="0" PluginID="1"/>
+						</ConversionPluginInfo>
+						<ConversionPluginInfo Platform="Web">
+							<ConversionPlugin Name="" ID="{EB53C29E-77BE-4615-9039-43924044EE7C}" PluginName="PCM" CompanyID="0" PluginID="1"/>
 						</ConversionPluginInfo>
 						<ConversionPluginInfo Platform="Mac">
 							<ConversionPlugin Name="" ID="{0ED8F5C2-0FF8-49FF-B956-593A5DF5EAFD}" PluginName="PCM" CompanyID="0" PluginID="1"/>

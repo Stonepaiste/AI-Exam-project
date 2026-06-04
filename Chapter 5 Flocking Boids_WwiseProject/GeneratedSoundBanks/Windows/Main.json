@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{42C10DD2-0C96-4BC1-A8CF-5F0029EF151D}",
     "Language": "SFX",
-    "Hash": "{710C5711-370A-FE1C-07A2-E05237416199}",
+    "Hash": "{C730071E-36CF-E7E0-D464-971F0B58653B}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
     "Path": "Main.bnk",
@@ -29,7 +29,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Rain of Fire-16bit.wav",
-      "CachePath": "5B/{5B08523C-8CAA-64CC-71EC-FE67256C2989}.wem"
+      "CachePath": "78/{7895A637-655D-2C74-1442-075375AF56B2}.wem"
      },
      {
       "Id": "763099093",
@@ -108,6 +108,6 @@
     ]
    }
   ],
-  "FileHash": "{79AF3C2E-51CB-906D-19FE-E1C8761AA2DB}"
+  "FileHash": "{9469F8D4-4F38-3029-3BDF-38DAB1510744}"
  }
 }

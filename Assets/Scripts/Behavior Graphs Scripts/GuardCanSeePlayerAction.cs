@@ -6,12 +6,12 @@ using Action = Unity.Behavior.Action;
 
 namespace BirdAI
 {
-    /// Continuously checks LOS to the player every frame.
-    /// Returns Running while the bird CAN see the player.
-    /// Returns Failure the moment LOS is lost (player hid behind cover).
-    ///
-    /// Use this as a guard running in parallel with an attack sequence.
-    /// When it fails, the parallel node aborts the attack.
+    // Continuously checks LOS to the player every frame.
+    // Returns Running while the bird CAN see the player.
+    // Returns Failure the moment LOS is lost (player hid behind cover).
+    //
+
+    // When it fails, the parallel node aborts the attack.
     [Serializable, GeneratePropertyBag]
     [NodeDescription(
         name: "Guard Can See Player",
@@ -57,7 +57,7 @@ namespace BirdAI
 
             if (canSee)
             {
-                // Reset grace timer whenever we have LOS
+                // Reset timer whenever we have LOS
                 _hadLOS = true;
                 _losLostTime = 0f;
                 return Status.Running;
@@ -66,7 +66,7 @@ namespace BirdAI
             // LOS lost
             if (_hadLOS)
             {
-                // First frame without LOS — start the grace timer
+                // First frame without LOS — start the timer
                 _hadLOS = false;
                 WarningDisplay.Instance?.Hide();
                 _losLostTime = Time.time;
