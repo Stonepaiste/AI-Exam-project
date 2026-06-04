@@ -18,9 +18,9 @@ namespace BirdAI
     public partial class RoamAction : Action
     {
         [SerializeReference] public BlackboardVariable<GameObject> Self;
-
-        [Tooltip("How often (seconds) the BT should re-evaluate distance/LOS while roaming.")]
+        
         [SerializeReference] public BlackboardVariable<float> RecheckInterval;
+        
 
         private float _elapsed;
 
@@ -33,10 +33,14 @@ namespace BirdAI
 
             bird.Motor.Mode = BirdMode.Roam;
             return Status.Running;
+            
         }
 
         protected override Status OnUpdate()
         {
+            
+            
+            
             return Status.Running;
         }
     }

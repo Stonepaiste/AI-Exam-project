@@ -14,10 +14,10 @@ using Unity.Properties;
     id: "96db7080101c38fd52e34190680cd6d0")]
 public partial class SetRallyPointAction : Action
 {
-    [Tooltip("The player (used as the basis for the rally position).")]
+    
     [SerializeReference] public BlackboardVariable<GameObject> Player;
 
-    [Tooltip("Output: where the flock should gather before diving.")]
+  
     [SerializeReference] public BlackboardVariable<Vector3> RallyPoint;
 
     protected override Status OnStart()

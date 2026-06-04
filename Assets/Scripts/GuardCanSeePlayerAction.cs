@@ -22,8 +22,6 @@ namespace BirdAI
     public partial class GuardCanSeePlayerAction : Action
     {
         [SerializeReference] public BlackboardVariable<GameObject> Self;
-
-        [Tooltip("Seconds of grace before failing after LOS is lost. Prevents flickering from brief occlusion.")]
         [SerializeReference] public BlackboardVariable<float> GracePeriod;
         [SerializeReference] public BlackboardVariable<bool> LineOfSight;
         private float _losLostTime;
@@ -62,7 +60,6 @@ namespace BirdAI
                 // Reset grace timer whenever we have LOS
                 _hadLOS = true;
                 _losLostTime = 0f;
-                
                 return Status.Running;
             }
 
@@ -79,7 +76,8 @@ namespace BirdAI
 
             if (Time.time - _losLostTime >= grace)
             {
-                // Grace period expired — player is behind cover
+                // Grace period expired — player is behind cover, set bird back to roam
+                bird.Motor.Mode = BirdMode.Roam;
                 return Status.Failure;
             }
 

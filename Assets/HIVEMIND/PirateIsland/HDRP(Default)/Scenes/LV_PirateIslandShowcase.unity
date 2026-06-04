@@ -29559,6 +29559,14 @@ PrefabInstance:
       value: 3.483
       objectReference: {fileID: 0}
     - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: roamRadius
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
+      propertyPath: turnRateDeg
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6304037038859201734, guid: d112ac583f2584aa0930b5d62c04a0b9, type: 3}
       propertyPath: obstacleMask.m_Bits
       value: 72
       objectReference: {fileID: 0}

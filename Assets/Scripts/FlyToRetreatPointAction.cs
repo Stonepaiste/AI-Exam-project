@@ -21,14 +21,14 @@ namespace BirdAI
         [SerializeReference] public BlackboardVariable<GameObject> Self;
         [SerializeReference] public BlackboardVariable<GameObject> Player;
 
-        [Tooltip("How far from the player the retreat point is placed.")]
+       
         [SerializeReference] public BlackboardVariable<float> RetreatDistance;
 
-        [Tooltip("Altitude range for the retreat point.")]
+      
         [SerializeReference] public BlackboardVariable<float> MinAltitude;
         [SerializeReference] public BlackboardVariable<float> MaxAltitude;
 
-        [Tooltip("How close the bird must get to the retreat point to count as arrived.")]
+     
         [SerializeReference] public BlackboardVariable<float> ArriveRadius;
 
         private Vector3 _retreatTarget;

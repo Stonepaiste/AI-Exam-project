@@ -103,6 +103,7 @@ namespace BirdAI
 
         // Wander behavior. Flies toward a random point in the air.
         // When the bird gets close enough, it picks a new random point.
+        // when roam mode is called from behavior graph this is what it activates. 
         Vector3 RoamSteering()
         {
             if ((transform.position - _roamTarget).sqrMagnitude

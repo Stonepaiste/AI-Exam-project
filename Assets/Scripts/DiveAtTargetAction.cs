@@ -40,7 +40,7 @@ namespace BirdAI
             // Lock position at dive start — player can dodge by moving after this
             _committedTarget = Player.Value.transform.position;
             _hit = false;
-
+            // starts the dive! 
             bird.Motor.Mode = BirdMode.Dive;
             bird.Motor.Target = _committedTarget;
 
