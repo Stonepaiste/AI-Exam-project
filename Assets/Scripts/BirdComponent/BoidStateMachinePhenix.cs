@@ -1,3 +1,6 @@
+// code repo BoidsController
+//https://github.com/RayznGames/Flocking-Entity-System
+
 using UnityEngine;
 using UnityEngine.Events;
 
